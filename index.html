@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MI UI Clock Design </title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="head">
+        <h1>MIUI</h1>
+    </div>
+
+    <div class="msg">
+        <h3>DRAG ON SCREEN FOR EFFECT </h3>
+    </div>
+
+    <div class="time">
+        <span></span>
+    </div>
+
+    <div class="wrapper">
+        <div class="outer-circle">
+            <svg class="" height="300" width="300">
+                <ellipse class="dashed-circle" cx="150" cy="150" rx="130" ry="130" stroke="white" stroke-width="20" fill="none" />
+            </svg>
+              <!-- inner cirlce -->
+            <div class="inner-circle">
+                <div class="hr-wrapper hand-wrapper">
+                    <div class="hand hr-hand"></div>
+                </div>
+                <div class="mn-wrapper hand-wrapper">
+                    <div class="hand mn-hand"></div>
+                </div>
+                <div class="sec-wrapper hand-wrapper">
+                    <div class="sec-hand"></div>
+                </div>
+                <div class="pin-holder"></div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- slider for demo purpose only to visualize the rotation of clock hands -->
+    <!-- <div class="slider">
+        <input type="range" class="range" max="360" id="">
+    </div> -->
+
+    <script src="time.js"></script>
+</body>
+</html>
