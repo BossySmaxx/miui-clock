@@ -90,33 +90,36 @@ if (isAndroid = /mobile/.test(navigator.userAgent.toLowerCase())) {             
 
     // console.log("not mobile");
     body.addEventListener('mousemove', (pos) => {
-    
+        let delta = calcDistance({x: pos.clientX, y: pos.clientY}, {x: body.clientWidth/2, y: body.clientHeight/2});
+
         // console.log(pos.clientX);
         if (pos.clientX < body.clientWidth/2 && body.clientHeight/2 < pos.clientY) {
-            outerCircle.style.transform = `rotateX(-10deg) rotateY(-10deg) translateZ(-50px)`;
+            outerCircle.style.transform = `rotateX(-${delta}deg) rotateY(-${delta}deg) translateZ(-50px)`;
             innerCircle.style.transform = `rotateX(-9deg) rotateY(-9deg) translate(-50%, -50%) translateZ(50px)`;
     
         } 
         if (pos.clientX > body.clientWidth/2 && body.clientHeight/2 < pos.clientY) {
-            outerCircle.style.transform = `rotateX(-10deg) rotateY(10deg) translateZ(-50px)`;
+            outerCircle.style.transform = `rotateX(-${delta}deg) rotateY(${delta}deg) translateZ(-50px)`;
             innerCircle.style.transform = `rotateX(-9deg) rotateY(9deg) translate(-50%, -50%) translateZ(50px)`;
-    
         }
         if (pos.clientX < body.clientWidth/2 && body.clientHeight/2 > pos.clientY) {
-            outerCircle.style.transform = `rotateX(10deg) rotateY(-10deg)translateZ(-50px)`;
+            outerCircle.style.transform = `rotateX(${delta}deg) rotateY(-${delta}deg)translateZ(-50px)`;
             innerCircle.style.transform = `rotateX(9deg) rotateY(-9deg) translate(-50%, -50%) translateZ(50px)`;
         }
         if (pos.clientX > body.clientWidth/2 && body.clientHeight/2 > pos.clientY) {
-            outerCircle.style.transform = `rotateX(10deg) rotateY(10deg)translateZ(-50px)`;
+            outerCircle.style.transform = `rotateX(${delta}deg) rotateY(${delta}deg)translateZ(-50px)`;
             innerCircle.style.transform = `rotateX(9deg) rotateY(9deg) translate(-50%, -50%) translateZ(50px)`;
         }
     })
 
 }
 
+function calcDistance (mouse, target) {
+    let d = Math.sqrt(((target.x - mouse.x), (target.x - mouse.x)) + ((target.y - mouse.y) * (target.y - mouse.y)));
+    return (Math.abs(d) / 20);
+}
 
-
-// showing Time and animation in clcok  --------------------------------------------->>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+// showing Time and animation in clcok #=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#
 setInterval(() => {
     let seconds = new Date().getSeconds();
     let min = new Date().getMinutes();
@@ -125,12 +128,10 @@ setInterval(() => {
     if (hour > 12) {
         hour -= 12; 
     }
-    
-    console.log(hour + ":" + min + ":" + seconds);
+    // console.log(hour + ":" + min + ":" + seconds);
 
     document.querySelector('.sec-wrapper').style.transform = `translate(-50%, -50%) rotate(${seconds*6}deg)`;
     document.querySelector('.hr-wrapper').style.transform = `translate(-50%, -50%) rotate(${hour*30}deg)`;
     document.querySelector('.mn-wrapper').style.transform = `translate(-50%, -50%) rotate(${min*6}deg)`;
-
 }, 100);
 
